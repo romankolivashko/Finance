@@ -1,0 +1,69 @@
+import $ from 'jquery';
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Chart from 'chart.js/auto';
+import './css/styles.css';
+import CountryService from './js/country-service.js';
+import Country from './js/country.js';
+
+//Load Countries
+$('#load-countries').click(function () {
+  Country.loadCountries();
+});
+
+//READ - equivalent to Index() route in MVC
+$('#get-countries').click(async function () {
+  const response = await CountryService.getCountries();
+  //equivalent to calling return View(response);
+  displayResult(response);
+});
+
+//  function makeApiCall() {
+  
+// }
+
+//Equivalent to a .cshtml view file - cshtml uses cs logic to generate html - this uses js logic to generate html
+function displayResult(countries) {
+
+  const countryLabels = countries.map(country => country.Name);
+  
+  const countryRatings = countries.map(country => country.rating);
+
+  const countryData = {
+    labels: countryLabels,
+    datasets: [{
+      label: 'Country Ratings',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: countryRatings,
+    }]
+  };
+
+  const countryConfig = {
+    type: 'line',
+    data: countryData,
+    options: {}
+  };
+
+  const countryChart = new Chart(
+    document.getElementById('countriesChart'),
+    countryConfig
+  );
+
+  const countriesHtml = countries
+    .map(country => {
+      return `<div class="col my-3">
+        <div class="card mx-auto h-100" style="width: 18rem;">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">${country.name}</h5>
+            <p class="card-text">Region: ${country.region}</p>
+            <p class="card-text">Population: ${country.population}</p>
+            <p class="card-text">GDP: ${country.gdp}</p>
+          </div>
+        </div>
+      </div>`;
+    })
+    .join("");
+
+  $("#display").append(countriesHtml);
+}
