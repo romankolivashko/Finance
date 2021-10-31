@@ -4,35 +4,35 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Chart from 'chart.js/auto';
 import './css/styles.css';
 import CountryService from './js/country-service.js';
-import Country from './js/country.js';
+// import Country from './js/country.js';
 
 //Load Countries
 $('#load-countries').click(function () {
-  Country.loadCountries();
+  CountryService.loadCountries();
 });
 
 //READ - equivalent to Index() route in MVC
-$('#get-countries').click(async function () {
+$('#get-countries').click(function () {
+  getCountriesAsync();
+});
+
+async function getCountriesAsync() {
   const response = await CountryService.getCountries();
   //equivalent to calling return View(response);
   displayResult(response);
-});
-
-//  function makeApiCall() {
-  
-// }
+  console.log(response);
+}
 
 //Equivalent to a .cshtml view file - cshtml uses cs logic to generate html - this uses js logic to generate html
 function displayResult(countries) {
-
-  const countryLabels = countries.map(country => country.Name);
+  const countryLabels = countries.map(country => country.name);
   
-  const countryRatings = countries.map(country => country.rating);
+  const countryRatings = countries.map(country => country.gdp);
 
   const countryData = {
     labels: countryLabels,
     datasets: [{
-      label: 'Country Ratings',
+      label: 'GDP by Country',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
       data: countryRatings,
@@ -49,6 +49,7 @@ function displayResult(countries) {
     document.getElementById('countriesChart'),
     countryConfig
   );
+  console.log(countryChart);
 
   const countriesHtml = countries
     .map(country => {
@@ -65,5 +66,5 @@ function displayResult(countries) {
     })
     .join("");
 
-  $("#display").append(countriesHtml);
+  $("#countries-display").append(countriesHtml);
 }
