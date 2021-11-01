@@ -9,6 +9,7 @@ import CountryService from './js/country-service.js';
 //Load Countries
 $('#load-countries').click(function () {
   CountryService.loadCountries();
+  CountryService.loadPitchers();
 });
 
 //READ - equivalent to Index() route in MVC
@@ -16,8 +17,15 @@ $('#get-countries').click(function () {
   getCountriesAsync();
 });
 
-async function getCountriesAsync() {
-  const response = await CountryService.getCountries();
+$('#gdp-countries').click(function () {
+  getCountriesAsync("GDP");
+});
+$('#pop-countries').click(function () {
+  getCountriesAsync("population");
+});
+
+async function getCountriesAsync(params) {
+  const response = await CountryService.getCountries(params);
   //equivalent to calling return View(response);
   displayResult(response);
   console.log(response);
@@ -25,6 +33,7 @@ async function getCountriesAsync() {
 
 //Equivalent to a .cshtml view file - cshtml uses cs logic to generate html - this uses js logic to generate html
 function displayResult(countries) {
+  //chart.js stuff
   const countryLabels = countries.map(country => country.name);
   
   const countryRatings = countries.map(country => country.gdp);
@@ -51,6 +60,7 @@ function displayResult(countries) {
   );
   console.log(countryChart);
 
+  //"normal" JS way to create an html list
   const countriesHtml = countries
     .map(country => {
       return `<div class="col my-3">
