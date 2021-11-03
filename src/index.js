@@ -1,3 +1,14 @@
+
+import $ from 'jquery';
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Chart from 'chart.js/auto';
+import './css/styles.css';
+import CountryService from './js/country-service.js';
+import PitcherService from './js/pitcher-service.js';
+
+import displayPitchers from"./js/pitcher-display.js"
+
 import $ from "jquery";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -10,6 +21,7 @@ import displayResultEconomy from "./js/economy-display.js";
 ////////////
 //Countries
 ///////////
+
 
 // import Country from './js/country.js';
 
@@ -26,11 +38,21 @@ $("#get-countries").click(function () {
   $(".scroller").hide();
 });
 
+$('#get-pitchers').click(function () {
+  getPitchersAsync();
+});
+
 async function getCountriesAsync() {
   const response = await CountryService.getCountries();
   //equivalent to calling return View(response);
   displayResult(response);
   console.log(response);
+}
+async function getPitchersAsync() {
+  const response = await PitcherService.getPitchers();
+  //equivalent to calling return View(response);
+  displayPitchers(response);
+  // console.log(response);
 }
 
 //Equivalent to a .cshtml view file - cshtml uses cs logic to generate html - this uses js logic to generate html
@@ -81,6 +103,7 @@ function displayResult(countries) {
   $("#countries-display").append(countriesHtml);
 }
 
+=======
 ////////////////
 //Economy Chart
 ///////////////
@@ -104,3 +127,4 @@ async function getEconomyAsync() {
   displayResultEconomy(response);
   console.log(response);
 }
+
