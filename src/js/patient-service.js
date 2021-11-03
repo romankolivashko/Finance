@@ -1,8 +1,8 @@
-export default class PitcherService {
-  static async getPitchers() {
+export default class PatientService {
+  static async getPatients() {
     try {
       const response = await fetch(
-        `http://www.localhost:5000/api/pitchers`
+        `http://www.localhost:5000/api/patients`
       );
       if (!response.ok) {
         throw Error(response.status);
@@ -13,10 +13,10 @@ export default class PitcherService {
     }
   }
 
-  static async loadPitchers() {
+  static async loadPatients() {
     try {
       const response = await fetch(
-        `http://www.localhost:5000/api/pitchers/load`
+        `http://www.localhost:5000/api/patients/load`
       );
       if (!response.ok) {
         throw Error(response.status);
@@ -26,5 +26,4 @@ export default class PitcherService {
       return error.message;
     }
   }
-
 }

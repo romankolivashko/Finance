@@ -33,17 +33,26 @@
             <li class="nav-item">
               <a class="nav-link" href="#" id="get-economy">Economy</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="get-patients">Patients</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="get-pitchers">Pitchers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="get-complaints">Complaint</a>
+            </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 Load data
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Load countries</a>
-                <a class="dropdown-item" id="get-economy" href="#">Load economy</a>
-                <a class="dropdown-item" href="#">Load pitchers</a>
-                <a class="dropdown-item" href="#">Load insurance</a>
-                <a class="dropdown-item" href="#">Load auction</a>
+                <a class="dropdown-item" href="#" id="load-countries">Load countries</a>
+                <a class="dropdown-item" href="#" id="load-economy">Load economy</a>
+                <a class="dropdown-item" href="#" id="load-pitchers">Load pitchers</a>
+                <a class="dropdown-item" href="#" id="load-patients">Load insurance</a>
+                <a class="dropdown-item" href="#" id="load-complaints">Load auction</a>
               </div>
             </li>
           </ul>
@@ -78,24 +87,6 @@
       <button id="load-economy">Load Economy</button>
 
       <button id="get-economy">Get Economy</button> -->
-
-      <div id="countries-display">
-        <div>
-          <canvas id="countriesChart"></canvas>
-        </div>
-      </div>
-
-      <button id="get-economy">Get Economy</button>
-
-      <h1>Pitcher Price points</h1>
-      <button id="load-pitchers">Load Pitchers</button>
-      <button id="get-pitchers">Get Pitchers</button>
-
-      <h1>Complaint performance</h1>
-      <button id="load-complaints">Load Complaints</button>
-      <button id="get-complaints">Get Complaints</button>
-
-    </div>
 
     <div id="countries-display">
       <div>
@@ -161,6 +152,12 @@
     <div id="complaints-display">
       <div>
         <canvas id="complaintsChart"></canvas>
+      </div>
+    </div>
+    <div id="patients-display">
+      <div>
+        <canvas id="patientsChart"></canvas>
+        <canvas id="ageChart"></canvas>
       </div>
     </div>
 
