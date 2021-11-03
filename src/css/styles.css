@@ -1,3 +1,13 @@
 .hidden {
   display: none;
 }
+.tooltip{
+  visibility: hidden;
+  height: 100;
+  width: 400;
+  margin-top: 2px;
+  color:black;
+  background-color: blue;
+  font-size: 24px;
+  margin-bottom: 5px;
+}
