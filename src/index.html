@@ -10,47 +10,60 @@
 
 <body>
   <div id="container" class="py-4 container">
-    <div class="jumbotron jumbotron-fluid">
-      <h1>Finance</h1>
-    </div>
+    
     
     <div id="countries-display" >
       <button id="load-countries">Load Countries</button>
-      <button id="get-countries">Get Unsorted Countries</button>
-      <button id="gdp-countries">Sort Countries by GDP</button>
-      <button id="pop-countries">Sort Countries by Population</button>
-      <div>
-        <canvas id="countriesChart"></canvas>
+      <div id="countries-chart-container">
+        <canvas id="countries-chart"></canvas>
       </div>
       <form action="submit" id="region-form">
-        <label for="region-selector">
+        <label for="sort-selector">
+          <select name="sort-selector" id="sort-selector">
+            <option value="">
+              ALPHABETICAL             
+            </option>
+            <option value="POPULATION">
+              POPULATION             
+            </option>
+            <option value="GDP">
+              GDP             
+            </option>
+          </select>
+
           <select name="region-selector" id="region-selector">
+            <option value="">
+              ALL COUNTRIES
+            </option>
+            <option value="NORTHERN AFRICA">
+              NORTHERN AFRICA
+            </option>
             <option value="SUB-SAHARAN AFRICA">
               SUB-SAHARAN AFRICA
             </option>
             <option value="WESTERN EUROPE">
               WESTERN EUROPE
             </option>
-            <option value="NEAR EAST">
-              NEAR EAST
-            </option>
             <option value="EASTERN EUROPE">
               EASTERN EUROPE
             </option>
-            <option value="OCEANIA">
-              OCEANIA
+            <option value="BALTICS">
+              BALTICS
             </option>
-            <option value="LATIN AMER. & CARIB">
-              LATIN AMER. & CARIB
+            <option value="NEAR EAST">
+              NEAR EAST
             </option>
             <option value="C.W. OF IND. STATES">
               C.W. OF IND. STATES
             </option>
             <option value="ASIA (EX. NEAR EAST)">
-              ASIA (EX. NEAR EAST)
+              ASIA
             </option>
-            <option value="BALTICS">
-              BALTICS
+            <option value="OCEANIA">
+              OCEANIA
+            </option>
+            <option value="LATIN AMERICA AND CARIBBEAN">
+              LATIN AMERICA AND CARIBBEAN
             </option>
             <option value="NORTHERN AMERICA">
               NORTH AMERICA
