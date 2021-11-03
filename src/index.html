@@ -87,9 +87,17 @@
 
       <button id="get-economy">Get Economy</button>
 
+      <h1>Pitcher Price points</h1>
+      <button id="load-pitchers">Load Pitchers</button>
+      <button id="get-pitchers">Get Pitchers</button>
+
+      <h1>Complaint performance</h1>
+      <button id="load-complaints">Load Complaints</button>
+      <button id="get-complaints">Get Complaints</button>
+
     </div>
-    
-    <div id="countries-display" >
+
+    <div id="countries-display">
       <div>
         <canvas id="countriesChart"></canvas>
       </div>
@@ -103,6 +111,26 @@
         <div class="tooltip"></div>
       </div>
     </div>
+
+
+    <div id="economy-display">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <canvas id="economyChartInflation"></canvas>
+          </div>
+          <div class="col">
+            <canvas id="economyChartUnempl"></canvas>
+          </div>
+          <div class="w-100"></div>
+          <div class="col">
+            <canvas id="economyChartInterest"></canvas>
+          </div>
+          <div class="col">
+            <canvas id="economyChartGDP"></canvas>
+          </div>
+          <div class="w-100">
+            <canvas id="economyAll"></canvas>
 
       <div id="economy-display">
         <div class="container">
@@ -123,12 +151,22 @@
             <div class="w-100">
               <canvas id="economyAll"></canvas>
             </div>
+
           </div>
         </div>
         
       </div>
+
+    </div>
+    <div id="complaints-display">
+      <div>
+        <canvas id="complaintsChart"></canvas>
+      </div>
+    </div>
+
     <!-- </div> -->
   </div>
+
 </body>
 
 </html>
