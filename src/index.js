@@ -1,14 +1,3 @@
-
-import $ from 'jquery';
-import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Chart from 'chart.js/auto';
-import './css/styles.css';
-import CountryService from './js/country-service.js';
-import PitcherService from './js/pitcher-service.js';
-
-import displayPitchers from"./js/pitcher-display.js"
-
 import $ from "jquery";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -20,6 +9,8 @@ import ComplaintService from "./js/complaint-service.js";
 import displayComplaints from "./js/complaint-display.js";
 
 import displayResultEconomy from "./js/economy-display.js";
+import PitcherService from './js/pitcher-service.js';
+import displayPitchers from"./js/pitcher-display.js"
 
 
 ////////////
