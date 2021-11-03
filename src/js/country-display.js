@@ -25,12 +25,8 @@ export default function displayCountries(countries) {
 
   const countryColors = countries.map(country => {
     return getCountryColor(country.Region);
-  })
-
-
-
-
-
+  });
+  console.log(countryColors);
 
   const min = Math.min( ...countryGDPs ),
     max = Math.max( ...countryGDPs );
@@ -60,27 +56,38 @@ export default function displayCountries(countries) {
 }
 
 function getCountryColor(region) {
-
+  let color = "blue";
   switch(region) {
     case "NORTHERN AFRICA":
-    break;
+      color = "blue";
+      break;
     case "SUB-SAHARAN AFRICA":
-    break;
+      color = "blue";
+      break;
     case "WESTERN EUROPE":
-    break;
+      color = "blue";
+      break;
     case "EASTERN EUROPE":
-    break;
+      color = "blue";
+      break;
     case "NEAR EAST":
-    break;
+      color = "blue";
+      break;
     case "C.W. OF IND. STATES":
-    break;
+      color = "blue";
+      break;
     case "ASIA (EX. NEAR EAST)":
-    break;
+      color = "blue";
+      break;
     case "LATIN AMERICA AND CARIBBEAN":
-    break;
+      color = "blue";
+      break;
     case "NORTHERN AMERICA":
-    break;
+      color = "blue";
+      break;
     default:
-    break;
+      color = "blue";
+      break;
   }
+  return color;
 }
