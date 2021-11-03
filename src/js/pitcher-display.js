@@ -1,6 +1,7 @@
 import * as d3 from "d3";
 import Chart from "chart.js/auto";
 
+
 export default function displayPitchers(response)
 {
 //////////////
@@ -51,15 +52,15 @@ export default function displayPitchers(response)
   ///Chart.js
   ////////////
   
-    const pitcherNames = pitchers.map(pitcher => pitcher.name);
+    const pitcherNames = response.map(pitcher => pitcher.name);
     
-    const pitcherPitchPrice = pitchers.map(pitcher => pitcher.salary / pitcher.pitches);
+    const pitcherPitchPrice = response.map(pitcher => pitcher.salary / pitcher.pitches);
 
-    const pitcherSalary = pitchers.map(pitcher => pitcher.salary);
+    const pitcherSalary = response.map(pitcher => pitcher.salary);
 
-    const totalPitches = pitchers.map(pitcher => pitcher.pitches);
+    const totalPitches = response.map(pitcher => pitcher.pitches);
     
-    const ascendingTotalPitches = totalPitches.sort();
+  
   
     const pitcherData = {
       labels: pitcherNames,
@@ -68,6 +69,11 @@ export default function displayPitchers(response)
         backgroundColor: 'rgb(255, 99, 132)',
         borderColor: 'rgb(255, 99, 132)',
         data: pitcherPitchPrice,
+      },{
+        label: 'TotalPitches',
+        backgroundColor: 'rgb(125, 0 ,130)',
+        borderColor: 'rgb(125, 0 ,130)',
+        data: totalPitches,
       }]
     };
     const pitcherSalaryData = {
@@ -80,12 +86,12 @@ export default function displayPitchers(response)
       }]
     };
     const pitcherSalaryPitch = {
-      labels: ascendingTotalPitches,
+      labels: pitcherNames,
       datasets: [{
-        label: 'Pitcher Salary',
+        label: 'TotalPitches',
         backgroundColor: 'rgb(125, 0 ,130)',
         borderColor: 'rgb(125, 0 ,130)',
-        data: pitcherSalary,
+        data: totalPitches,
       }]
     };
   
@@ -95,20 +101,19 @@ export default function displayPitchers(response)
       options: {}
     };
     const pitcherConfig3 = {
-      type: 'polarArea',
+      type: 'bar',
       data: pitcherSalaryData,
       options: {}
     };
     const pitcherConfig4 = {
-      type: 'bar',
+      type: 'line',
       data: pitcherSalaryPitch,
       options: {}
     };
   
     const pitcherChart = new Chart(
       document.getElementById('pitchersChart2'),
-      pitcherConfig2,
-      pitcherConfig3
+      pitcherConfig2
     );
 
     const pitcherSalaryChart = new Chart(

@@ -5,7 +5,7 @@ import Chart from 'chart.js/auto';
 import './css/styles.css';
 import CountryService from './js/country-service.js';
 import PitcherService from './js/pitcher-service.js';
-import * as d3 from "d3";
+
 import displayPitchers from"./js/pitcher-display.js"
 // import Country from './js/country.js';
 
@@ -18,6 +18,7 @@ $('#load-countries').click(function () {
 $('#get-countries').click(function () {
   getCountriesAsync();
 });
+
 $('#get-pitchers').click(function () {
   getPitchersAsync();
 });
