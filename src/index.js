@@ -1,15 +1,14 @@
 import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Chart from 'chart.js/auto';
 import './css/styles.css';
 import CountryService from './js/country-service.js';
+import displayCountries from './js/country-display.js';
 // import Country from './js/country.js';
 
 //Load Countries
 $('#load-countries').click(function () {
   CountryService.loadCountries();
-  CountryService.loadPitchers();
 });
 
 //READ - equivalent to Index() route in MVC
@@ -23,58 +22,19 @@ $('#gdp-countries').click(function () {
 $('#pop-countries').click(function () {
   getCountriesAsync("population");
 });
+$('#region-form').submit(function () {
+  const region = $('#region-selector').val();
+  getCountriesByRegionAsync(region);
+});
 
-async function getCountriesAsync(params) {
-  const response = await CountryService.getCountries(params);
+async function getCountriesAsync(sortParam) {
+  const response = await CountryService.getCountries(sortParam);
   //equivalent to calling return View(response);
-  displayResult(response);
-  console.log(response);
+  displayCountries(response);
+}
+async function getCountriesByRegionAsync(region) {
+  const response = await CountryService.getCountriesByRegion(region);
+  //equivalent to calling return View(response);
+  displayCountries(response);
 }
 
-//Equivalent to a .cshtml view file - cshtml uses cs logic to generate html - this uses js logic to generate html
-function displayResult(countries) {
-  //chart.js stuff
-  const countryLabels = countries.map(country => country.name);
-  
-  const countryRatings = countries.map(country => country.gdp);
-
-  const countryData = {
-    labels: countryLabels,
-    datasets: [{
-      label: 'GDP by Country',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
-      data: countryRatings,
-    }]
-  };
-
-  const countryConfig = {
-    type: 'line',
-    data: countryData,
-    options: {}
-  };
-
-  const countryChart = new Chart(
-    document.getElementById('countriesChart'),
-    countryConfig
-  );
-  console.log(countryChart);
-
-  //"normal" JS way to create an html list
-  const countriesHtml = countries
-    .map(country => {
-      return `<div class="col my-3">
-        <div class="card mx-auto h-100" style="width: 18rem;">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">${country.name}</h5>
-            <p class="card-text">Region: ${country.region}</p>
-            <p class="card-text">Population: ${country.population}</p>
-            <p class="card-text">GDP: ${country.gdp}</p>
-          </div>
-        </div>
-      </div>`;
-    })
-    .join("");
-
-  $("#countries-display").append(countriesHtml);
-}
