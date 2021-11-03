@@ -5,44 +5,68 @@ import Chart from 'chart.js/auto';
 import './css/styles.css';
 // import CountryService from './js/country-service.js';
 import PatientService from './js/patient-service.js';
-// import Country from './js/country.js';
 
-//Load Countries
-// $('#load-countries').click(function () {
-//   CountryService.loadCountries();
-// });
+//import displayResultPatients from"./js/patient-display.js"
+
+
 
 $('#load-patients').click(function () {
   PatientService.loadPatients();
 });
 
-//READ - equivalent to Index() route in MVC
-// $('#get-countries').click(function () {
-//   getCountriesAsync();
-// });
-
 $('#get-Patients').click(function () {
   getPatientsAsync();
 });
-
-// async function getCountriesAsync() {
-//   const response = await CountryService.getCountries();
-//   //equivalent to calling return View(response);
-//   displayResult(response);
-//   console.log(response);
-// }
 
 async function getPatientsAsync() {
   const response = await PatientService.getPatients();
   //equivalent to calling return View(response);
   console.log(response);
-  displayResult(response);
+  displayResultPatients(response);
+  displayResultAge(response);
 }
 
-function displayResult(patients) {
+function displayResultPatients(patients) {
   const patientLabels = patients.map(patient => patient.bmi);
-  
+
   const patientRatings = patients.map(patient => patient.charges);
+
+  const totalDuration = 100000;
+  const delayBetweenPoints = totalDuration / patientLabels.length;
+  const previousY = (ctx) =>
+    ctx.index === 0
+      ? ctx.chart.scales.y.getPixelForValue(100)
+      : ctx.chart
+        .getDatasetMeta(ctx.datasetIndex)
+        .data[ctx.index - 1].getProps(["y"], true).y;
+  const animation = {
+    x: {
+      type: "number",
+      easing: "linear",
+      duration: delayBetweenPoints,
+      from: NaN, // the point is initially skipped
+      delay(ctx) {
+        if (ctx.type !== "data" || ctx.xStarted) {
+          return 0;
+        }
+        ctx.xStarted = true;
+        return ctx.index * delayBetweenPoints;
+      },
+    },
+    y: {
+      type: "number",
+      easing: "linear",
+      duration: delayBetweenPoints,
+      from: previousY,
+      delay(ctx) {
+        if (ctx.type !== "data" || ctx.yStarted) {
+          return 0;
+        }
+        ctx.yStarted = true;
+        return ctx.index * delayBetweenPoints;
+      },
+    },
+  };
 
   const patientData = {
     labels: patientLabels,
@@ -58,6 +82,7 @@ function displayResult(patients) {
     type: 'scatter',
     data: patientData,
     options: {
+      animation,
       scales: {
         y: {
           position: "bottom"
@@ -70,67 +95,81 @@ function displayResult(patients) {
     document.getElementById('patientsChart'),
     patientConfig
   );
-  console.log(patientChart);
 
-  // const countriesHtml = countries
-  //   .map(country => {
-  //     return `<div class="col my-3">
-  //       <div class="card mx-auto h-100" style="width: 18rem;">
-  //         <div class="card-body d-flex flex-column">
-  //           <h5 class="card-title">${country.name}</h5>
-  //           <p class="card-text">Region: ${country.region}</p>
-  //           <p class="card-text">Population: ${country.population}</p>
-  //           <p class="card-text">GDP: ${country.gdp}</p>
-  //         </div>
-  //       </div>
-  //     </div>`;
-  //   })
-  //   .join("");
+  console.log(patientChart);
 
   $("#patients-display");
 }
-//Equivalent to a .cshtml view file - cshtml uses cs logic to generate html - this uses js logic to generate html
-// function displayResult(countries) {
-//   const countryLabels = countries.map(country => country.name);
-  
-//   const countryRatings = countries.map(country => country.gdp);
 
-//   const countryData = {
-//     labels: countryLabels,
-//     datasets: [{
-//       label: 'GDP by Country',
-//       backgroundColor: 'rgb(255, 99, 132)',
-//       borderColor: 'rgb(255, 99, 132)',
-//       data: countryRatings,
-//     }]
-//   };
+function displayResultAge(patients) {
 
-//   const countryConfig = {
-//     type: 'line',
-//     data: countryData,
-//     options: {}
-//   };
+  const ageLabels = patients.map(patient => patient.age);
+  const ageRatings = patients.map(patient => patient.charges);
+  const totalDuration = 50000;
+  const delayBetweenPoints = totalDuration / ageLabels.length;
+  const previousY = (ctx) =>
+    ctx.index === 0
+      ? ctx.chart.scales.y.getPixelForValue(100)
+      : ctx.chart
+        .getDatasetMeta(ctx.datasetIndex)
+        .data[ctx.index - 1].getProps(["y"], true).y;
+  const animation = {
+    x: {
+      type: "number",
+      easing: "linear",
+      duration: delayBetweenPoints,
+      from: NaN,
+      delay(ctx) {
+        if (ctx.type !== "data" || ctx.xStarted) {
+          return 0;
+        }
+        ctx.xStarted = true;
+        return ctx.index * delayBetweenPoints;
+      },
+    },
+    y: {
+      type: "number",
+      easing: "linear",
+      duration: delayBetweenPoints,
+      from: previousY,
+      delay(ctx) {
+        if (ctx.type !== "data" || ctx.yStarted) {
+          return 0;
+        }
+        ctx.yStarted = true;
+        return ctx.index * delayBetweenPoints;
+      },
+    },
+  };
 
-//   const countryChart = new Chart(
-//     document.getElementById('countriesChart'),
-//     countryConfig
-//   );
-//   console.log(countryChart);
+  const ageData = {
+    labels: ageLabels,
+    datasets: [{
+      label: 'Age',
+      backgroundColor: 'rgb(153, 51, 255)',
+      borderColor: 'rgbrgb(153, 51, 255)',
+      data: ageRatings,
+    }]
+  };
 
-//   const countriesHtml = countries
-//     .map(country => {
-//       return `<div class="col my-3">
-//         <div class="card mx-auto h-100" style="width: 18rem;">
-//           <div class="card-body d-flex flex-column">
-//             <h5 class="card-title">${country.name}</h5>
-//             <p class="card-text">Region: ${country.region}</p>
-//             <p class="card-text">Population: ${country.population}</p>
-//             <p class="card-text">GDP: ${country.gdp}</p>
-//           </div>
-//         </div>
-//       </div>`;
-//     })
-//     .join("");
+  const ageConfig = {
+    type: 'scatter',
+    data: ageData,
+    options: {
+      animation,
+      scales: {
+        y: {
+          position: "bottom"
+        }
+      }
+    },
+  };
 
-//   $("#countries-display").append(countriesHtml);
-// }
+  const ageChart = new Chart(
+    document.getElementById('ageChart'),
+    ageConfig
+  );
+  console.log(ageChart);
+
+  $("#age-display");
+}
