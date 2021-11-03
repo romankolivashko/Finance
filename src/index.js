@@ -1,4 +1,3 @@
-
 import $ from "jquery";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -6,29 +5,26 @@ import "./css/styles.css";
 import EconomyService from "./js/economy-service.js";
 import ComplaintService from "./js/complaint-service.js";
 import CountryService from "./js/country-service";
-import PitcherService from './js/pitcher-service.js';
+import PitcherService from "./js/pitcher-service.js";
 import PatientService from "./js/patient-service";
-import displayCountries from './js/country-display.js';
-
+import displayCountries from "./js/country-display.js";
 import displayResultPatients from "./js/patient-display";
 import displayComplaints from "./js/complaint-display.js";
 import displayResultEconomy from "./js/economy-display.js";
-import displayPitchers from"./js/pitcher-display.js";
-
+import displayPitchers from "./js/pitcher-display.js";
 
 ////////////
 //Countries
 ///////////
 
-//Load Countries
 $("#load-countries").click(function () {
   CountryService.loadCountries();
 });
 
-$('#region-form').submit(function (e) {
+$("#region-form").submit(function (e) {
   e.preventDefault();
-  const region = $('#region-selector').val();
-  const sortParam = $('#sort-selector').val();
+  const region = $("#region-selector").val();
+  const sortParam = $("#sort-selector").val();
   getCountriesAsync(region, sortParam);
 });
 
@@ -38,12 +34,16 @@ $("#get-countries").click(function () {
   $("#economy-display").hide();
   $(".scroller").hide();
 });
+
 async function getCountriesAsync(region, sortParam) {
   const response = await CountryService.getCountries(region, sortParam);
   displayCountries(response);
 }
 
-//Load Complaints
+////////////
+//Complaints
+///////////
+
 $("#load-complaints").click(function () {
   ComplaintService.loadComplaints();
 });
@@ -59,25 +59,32 @@ async function getComplaintsAsync() {
   console.log(response);
 }
 
-/// pitchers functions
-$('#get-pitchers').click(function () {
+////////////
+//Pitchers
+///////////
+
+$("#get-pitchers").click(function () {
   getPitchersAsync();
 });
-$('#load-pitchers').click(function () {
+
+$("#load-pitchers").click(function () {
   PitcherService.loadPitchers();
 });
+
 async function getPitchersAsync() {
   const response = await PitcherService.getPitchers();
   displayPitchers(response);
 }
 
+////////////
+//Patients
+///////////
 
-//Patient Functions
-$('#load-patients').click(function () {
+$("#load-patients").click(function () {
   PatientService.loadPatients();
 });
 
-$('#get-patients').click(function () {
+$("#get-patients").click(function () {
   getPatientsAsync();
 });
 
@@ -86,7 +93,10 @@ async function getPatientsAsync() {
   displayResultPatients(response);
 }
 
-//Load Econoomy
+////////////
+//Economy
+///////////
+
 $("#load-economy").click(function () {
   EconomyService.loadEconomy();
 });
