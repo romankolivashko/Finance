@@ -5,53 +5,104 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kavoon&family=Abril+Fatface&display=swap" rel="stylesheet">
-  <title>Finance</title>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <title>Charts</title>
 </head>
 
 <body>
   <div id="container" class="py-4 container">
-    <div class="jumbotron jumbotron-fluid">
-      <h1>Finance</h1>
+    <!-- <div class="jumbotron jumbotron-fluid"> -->
+
+      <!-- Navbar start -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="./index.html">Charts</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <!-- <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li> -->
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="get-countries">Countries</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="get-economy">Economy</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Load data
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">Load countries</a>
+                <a class="dropdown-item" id="get-economy" href="#">Load economy</a>
+                <a class="dropdown-item" href="#">Load pitchers</a>
+                <a class="dropdown-item" href="#">Load insurance</a>
+                <a class="dropdown-item" href="#">Load auction</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!-- Navbar end -->
+
+       <!-- Splash screen start -->
+       <div class="scroller">
+        <div class="inner">
+        <span>We are team Epicodus.</span>
+        <span>We worked with a lot of data this week.</span>
+        <span>D3 and Chart.js are awesome.</span>
+        <span>The real goal is to <a class="blue">organize</a> <a class="blueb">data</a>.</span>
+        </div>
+        </div>
+      <!-- Splash screen end -->
+
+     
+
+      <!-- <h1>Finance</h1>
       <button id="load-countries">Load Countries</button>
       <button id="get-countries">Get Countries</button>
 
       <h1>Economy performance</h1>
       <button id="load-economy">Load Economy</button>
-      <button id="get-economy">Get Economy</button>
-    </div>
-    
-    <div id="countries-display" >
-      <div>
-        <canvas id="countriesChart"></canvas>
-      </div>
-    </div>
+      <button id="get-economy">Get Economy</button> -->
 
-    <div id="economy-display" >
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <canvas id="economyChartInflation"></canvas>
-          </div>
-          <div class="col">
-            <canvas id="economyChartUnempl"></canvas>
-          </div>
-          <div class="w-100"></div>
-          <div class="col">
-            <canvas id="economyChartInterest"></canvas>
-          </div>
-          <div class="col">
-            <canvas id="economyChartGDP"></canvas>
-          </div>
-          <div class="w-100">
-            <canvas id="economyAll"></canvas>
-          </div>
+      <div id="countries-display">
+        <div>
+          <canvas id="countriesChart"></canvas>
         </div>
       </div>
-      <div>
+
+      <div id="economy-display">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <canvas id="economyChartInflation"></canvas>
+            </div>
+            <div class="col">
+              <canvas id="economyChartUnempl"></canvas>
+            </div>
+            <div class="w-100"></div>
+            <div class="col">
+              <canvas id="economyChartInterest"></canvas>
+            </div>
+            <div class="col">
+              <canvas id="economyChartGDP"></canvas>
+            </div>
+            <div class="w-100">
+              <canvas id="economyAll"></canvas>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    <!-- </div> -->
   </div>
-
-  <div id="whatever-display" ></div>
-
 </body>
 
 </html>

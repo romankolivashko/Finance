@@ -21,6 +21,9 @@ $("#load-countries").click(function () {
 //READ - equivalent to Index() route in MVC
 $("#get-countries").click(function () {
   getCountriesAsync();
+  $("#countries-display").show();
+  $("#economy-display").hide();
+  $(".scroller").hide();
 });
 
 async function getCountriesAsync() {
@@ -90,6 +93,9 @@ $("#load-economy").click(function () {
 //READ - equivalent to Index() route in MVC
 $("#get-economy").click(function () {
   getEconomyAsync();
+  $("#economy-display").show();
+  $("#countries-display").hide();
+  $(".scroller").hide();
 });
 
 async function getEconomyAsync() {
