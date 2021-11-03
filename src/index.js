@@ -6,6 +6,7 @@ import "./css/styles.css";
 import CountryService from "./js/country-service.js";
 import EconomyService from "./js/economy-service.js";
 import ComplaintService from "./js/complaint-service.js";
+import displayComplaints from "./js/complaint-display.js";
 
 ////////////
 //Countries
@@ -364,50 +365,3 @@ async function getComplaintsAsync() {
 }
 
 //Equivalent to a .cshtml view file - cshtml uses cs logic to generate html - this uses js logic to generate html
-function displayComplaints(complaints) {
-  const complaintLabels = complaints.map((complaint) => complaint.consumerComplaint);
-
-  const complaintRatings = complaints.map((complaint) => complaint.company);
-
-
-
-  const complaintData = {
-    labels: complaintLabels,
-    datasets: [
-      {
-        label: "Complaint by Company",
-        backgroundColor: "rgb(255, 99, 132)",
-        borderColor: "rgb(255, 99, 132)",
-        data: complaintRatings,
-      },
-    ],
-  };
-
-  const complaintConfig = {
-    type: "line",
-    data: complaintData,
-    options: {},
-  };
-
-  const complaintChart = new Chart(
-    document.getElementById("complaintsChart"),
-    complaintConfig
-  );
-  console.log(complaintChart);
-
-  const complaintsHtml = complaints
-    .map((complaint) => {
-      return `<div class="col my-3">
-      <div class="card mx-auto h-100" style="width: 18rem;">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">${complaint.consumerComplaint}</h5>
-          <p class="card-text">Company: ${complaint.company}</p>
-          <p class="card-text">State: ${complaint.state}</p>
-        </div>
-      </div>
-    </div>`;
-    })
-    .join("");
-
-  $("#complaints-display").append(complaintsHtml);
-}
