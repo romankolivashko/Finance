@@ -1,14 +1,3 @@
-
-import $ from 'jquery';
-import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Chart from 'chart.js/auto';
-import './css/styles.css';
-import CountryService from './js/country-service.js';
-import PitcherService from './js/pitcher-service.js';
-
-import displayPitchers from"./js/pitcher-display.js"
-
 import $ from "jquery";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -17,6 +6,8 @@ import "./css/styles.css";
 import CountryService from "./js/country-service.js";
 import EconomyService from "./js/economy-service.js";
 import displayResultEconomy from "./js/economy-display.js";
+import PitcherService from './js/pitcher-service.js';
+import displayPitchers from"./js/pitcher-display.js"
 
 ////////////
 //Countries
@@ -100,7 +91,6 @@ function displayResult(countries) {
   $("#countries-display").append(countriesHtml);
 }
 
-=======
 ////////////////
 //Economy Chart
 ///////////////
