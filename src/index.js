@@ -32,7 +32,6 @@ $('#region-form').submit(function (e) {
   getCountriesAsync(region, sortParam);
 });
 
-//READ - equivalent to Index() route in MVC
 $("#get-countries").click(function () {
   getCountriesAsync();
   $("#countries-display").show();
@@ -41,7 +40,6 @@ $("#get-countries").click(function () {
 });
 async function getCountriesAsync(region, sortParam) {
   const response = await CountryService.getCountries(region, sortParam);
-  //equivalent to calling return View(response);
   displayCountries(response);
 }
 
@@ -50,7 +48,6 @@ $("#load-complaints").click(function () {
   ComplaintService.loadComplaints();
 });
 
-//READ - equivalent to Index() route in MVC
 $("#get-complaints").click(function () {
   console.log("button clicked");
   getComplaintsAsync();
@@ -58,7 +55,6 @@ $("#get-complaints").click(function () {
 
 async function getComplaintsAsync() {
   const response = await ComplaintService.getComplaints();
-  //equivalent to calling return View(response);
   displayComplaints(response);
   console.log(response);
 }
@@ -72,9 +68,7 @@ $('#load-pitchers').click(function () {
 });
 async function getPitchersAsync() {
   const response = await PitcherService.getPitchers();
-  //equivalent to calling return View(response);
   displayPitchers(response);
-  // console.log(response);
 }
 
 
@@ -97,7 +91,6 @@ $("#load-economy").click(function () {
   EconomyService.loadEconomy();
 });
 
-//READ - equivalent to Index() route in MVC
 $("#get-economy").click(function () {
   getEconomyAsync();
   $("#economy-display").show();
