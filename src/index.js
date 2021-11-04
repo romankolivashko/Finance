@@ -30,14 +30,11 @@ $("#region-form").submit(function (e) {
 
 $("#get-countries").click(function () {
   getCountriesAsync();
-<<<<<<< HEAD
-=======
   $("#countries-display").show();
   $("#economy-display").hide();
   $("#complaints-display").hide();
   $("#pitcher-display").hide();
   $("#patients-display").hide();
->>>>>>> roman_styling
   $(".scroller").hide();
   $("#pitcher-display").hide();
   $("#economy-display").hide();
@@ -60,15 +57,6 @@ $("#load-complaints").click(function () {
 });
 
 $("#get-complaints").click(function () {
-<<<<<<< HEAD
-  getComplaintsAsync();
-  $(".scroller").hide();
-  $("#pitcher-display").hide();
-  $("#economy-display").hide();
-  $("#countries-display").hide();
-  $("#patients-display").hide();
-  $("#complaints-display").show();
-=======
   //console.log("button clicked");
   getComplaintsAsync();
   $("#complaints-display").show();
@@ -78,7 +66,6 @@ $("#get-complaints").click(function () {
   $("#pitcher-display").hide();
   $(".scroller").hide();
   
->>>>>>> roman_styling
 });
 
 async function getComplaintsAsync() {
@@ -96,25 +83,12 @@ $("#load-pitchers").click(function () {
 
 $("#get-pitchers").click(function () {
   getPitchersAsync();
-<<<<<<< HEAD
-  $(".scroller").hide();
-  $("#economy-display").hide();
-  $("#complaints-display").hide();
-  $("#countries-display").hide();
-  $("#patients-display").hide();
-  $("#pitcher-display").show();
-});
-
-$("#load-pitchers").click(function () {
-  PitcherService.loadPitchers();
-=======
   $("#pitcher-display").show();
   $("#complaints-display").hide();
   $("#economy-display").hide();
   $("#patients-display").hide();
   $("#countries-display").hide();
   $(".scroller").hide();
->>>>>>> roman_styling
 });
 
 async function getPitchersAsync() {
@@ -132,21 +106,12 @@ $("#load-patients").click(function () {
 
 $("#get-patients").click(function () {
   getPatientsAsync();
-<<<<<<< HEAD
-  $(".scroller").hide();
-  $("#pitcher-display").hide();
-  $("#economy-display").hide();
-  $("#countries-display").hide();
-  $("#complaints-display").hide();
-  $("#patients-display").show();
-=======
   $("#patients-display").show();
   $("#pitcher-display").hide();
   $("#complaints-display").hide();
   $("#economy-display").hide();
   $("#countries-display").hide();
   $(".scroller").hide();
->>>>>>> roman_styling
 });
 
 async function getPatientsAsync() {
