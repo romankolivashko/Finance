@@ -7,6 +7,8 @@ export default function displayPitchers(response)
 //////////////
 /// d3.js
 /////////////
+  var width=400;
+  var height=300;
 
 if (($(".pitchersChart:not(:empty)").length) === 0 ){
 
