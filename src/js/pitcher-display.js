@@ -7,9 +7,12 @@ export default function displayPitchers(response)
 //////////////
 /// d3.js
 /////////////
-  var width=1000;
-  var height=800;
 
+if (($(".pitchersChart:not(:empty)").length) === 0 ){
+
+  var width=1000;
+  var height=500;
+  
   var spacing = 50;
   
   var data = response;
@@ -37,9 +40,9 @@ export default function displayPitchers(response)
   var dots = svg.append("g")
   .selectAll("g")
   .data(data);
-
+  
   dots.selectAll('g').data(data).join('g');
-
+  
   dots.enter().append("circle")
   .attr("cx", function(d){return xScale(d.pitches);})
   .attr("cy", function(d){return yScale(d.salary);})
@@ -47,11 +50,13 @@ export default function displayPitchers(response)
   .attr("id", function(d) {return d.Id})
   .attr("transform", "translate(100,0)")
   .style("fill", "green")
+}
 
   /////////////
   ///Chart.js
   ////////////
   
+  // Collection
     const pitcherNames = response.map(pitcher => pitcher.name);
     
     const pitcherPitchPrice = response.map(pitcher => pitcher.salary / pitcher.pitches);
@@ -61,7 +66,7 @@ export default function displayPitchers(response)
     const totalPitches = response.map(pitcher => pitcher.pitches);
     
   
-  
+  // Organizing
     const pitcherData = {
       labels: pitcherNames,
       datasets: [{
@@ -95,22 +100,68 @@ export default function displayPitchers(response)
       }]
     };
   
+    //Animation
+    const totalDuration = 4000;
+    const delayBetweenPoints = totalDuration / response.length;
+    const previousY = (ctx) =>
+      ctx.index === 0
+        ? ctx.chart.scales.y.getPixelForValue(100)
+        : ctx.chart
+          .getDatasetMeta(ctx.datasetIndex)
+          .data[ctx.index - 1].getProps(["y"], true).y;
+    const animation = {
+      x: {
+        type: "number",
+        easing: "linear",
+        duration: delayBetweenPoints,
+        from: NaN, // the point is initially skipped
+        delay(ctx) {
+          if (ctx.type !== "data" || ctx.xStarted) {
+            return 0;
+          }
+          ctx.xStarted = true;
+          return ctx.index * delayBetweenPoints;
+        },
+      },
+      y: {
+        type: "number",
+        easing: "linear",
+        duration: delayBetweenPoints,
+        from: previousY,
+        delay(ctx) {
+          if (ctx.type !== "data" || ctx.yStarted) {
+            return 0;
+          }
+          ctx.yStarted = true;
+          return ctx.index * delayBetweenPoints;
+        },
+      },
+    };
+
+    //Configuring
     const pitcherConfig2 = {
       type: 'line',
       data: pitcherData,
-      options: {}
+      options: {
+        animation,
+      },
     };
     const pitcherConfig3 = {
       type: 'bar',
       data: pitcherSalaryData,
-      options: {}
+      options: {
+        animation,
+      },
     };
     const pitcherConfig4 = {
       type: 'line',
       data: pitcherSalaryPitch,
-      options: {}
+      options: {
+        animation,
+      },
     };
   
+    //Charting
     const pitcherChart = new Chart(
       document.getElementById('pitchersChart2'),
       pitcherConfig2

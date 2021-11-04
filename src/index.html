@@ -111,7 +111,6 @@
         </div>
       </div>
       <!-- Splash screen end -->
-
       <div id="countries-display" class="hidden">
         <div id="countries-chart-container">
           <canvas id="countries-chart"></canvas>
@@ -144,17 +143,25 @@
           <button type="submit">View</button>
         </form>
       </div>
-      
+    
       <div id="pitcher-display">
-        <div>
-          <section class="pitchersChart"></section>
-          <canvas id="pitchersChart2"></canvas>
-          <canvas id="pitchersChart3"></canvas>
-          <canvas id="pitchersChart4"></canvas>
-          <div class="tooltip"></div>
+        <div class="container">
+            <section class="pitchersChart"></section>
+          <div class="row">
+            <div class="col">
+              <canvas id="pitchersChart4"></canvas>
+            </div>
+            <div class="col">
+              <canvas id="pitchersChart3"></canvas>
+            </div>
+            <div class="w-100"></div>
+            <div class="col">
+              <canvas id="pitchersChart2"></canvas>
+            </div>
+
+          </div>
         </div>
       </div>
-
       <div id="economy-display">
         <div class="container">
           <div class="row">
@@ -176,6 +183,7 @@
             </div>
           </div>
         </div>
+      </div>
       </div>
       <div id="complaints-display">
         <div>
