@@ -4,18 +4,7 @@ import $ from "jquery";
 
 //Equivalent to a .cshtml view file - cshtml uses cs logic to generate html - this uses js logic to generate html
 export default function displayCountries(countries) {
-  console.log("hi");
-  /*
-    trim, 
-    graph for each region
-    sort each - call in api
-    small to large, large to small, 
-    pop, gdp, alpha
-    color
-    color by region
-  */
 
-  //chart.js stuff
   $("#countries-chart").remove();
   $("#countries-chart-container").append(
     '<canvas id="countries-chart"><canvas>'
@@ -28,24 +17,17 @@ export default function displayCountries(countries) {
   const countryColors = countries.map((country) => {
     return getCountryColor(country.region);
   });
-  // console.log(countryColors);
 
   const min = Math.min( ...countryGDPs ),
     max = Math.max( ...countryGDPs );
-  const gdpColors = countryColors.map((color, i) => {
-    console.log(color);
-    console.log(color.toString().slice(0, color.length - 4));
-    const newColor = color.toString().slice(0, color.length - 4)+(countryGDPs[i]*66/(max - min) + 33)+"%)";
-    // console.log(newColor);
-    return newColor;
-  });
+  const gdpColors = countryColors.map((color, i) => color.toString().slice(0, color.length - 4)+(countryGDPs[i]*66/(max - min) + 33)+"%)");
   const countryData = {
     labels: countryLabels,
     datasets: [
       {
         label: "GDP Per Capita (USD)",
-        backgroundColor: gdpColors, //'rgb(255, 99, 132)',
-        borderColor: "rgb(255, 99, 132)",
+        backgroundColor: gdpColors,
+        borderColor: gdpColors,
         data: countryGDPs,
       },
     ],
