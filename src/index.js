@@ -87,7 +87,7 @@ $("#get-numberofcomplaints").click(function () {
 });
 
 async function getComplaintsAsync() {
-  const response = await NumberOfComplaintService.getComplaints();
+  const response = await NumberOfComplaintService.getNumberOfComplaints();
   displayNumberOfComplaints(response);
   console.log(response);
 }
