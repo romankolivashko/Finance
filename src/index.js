@@ -25,7 +25,9 @@ $("#region-form").submit(function (e) {
   e.preventDefault();
   const region = $("#region-selector").val();
   const sortParam = $("#sort-selector").val();
-  getCountriesAsync(region, sortParam);
+  const minGdp = Number.parseInt($("#min-gdp").val());
+  const maxGdp = Number.parseInt($("#max-gdp").val());
+  getCountriesAsync(region, sortParam, minGdp, maxGdp);
 });
 
 $("#get-countries").click(function () {
@@ -38,8 +40,8 @@ $("#get-countries").click(function () {
   $(".scroller").hide();
 });
 
-async function getCountriesAsync(region, sortParam) {
-  const response = await CountryService.getCountries(region, sortParam);
+async function getCountriesAsync(region, sortParam, minGdp, maxGdp) {
+  const response = await CountryService.getCountries(region, sortParam, minGdp, maxGdp);
   displayCountries(response);
 }
 

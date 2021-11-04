@@ -84,29 +84,40 @@
         <div class="form-group">
           <form action="submit" id="region-form">
             <label for="sort-selector">
-              <select name="sort-selector" id="sort-selector">
-                <option value="">ALPHABETICAL</option>
-                <option value="POPULATION">POPULATION</option>
-                <option value="GDP">GDP</option>
-              </select>
-
-              <select name="region-selector" id="region-selector">
-                <option value="">ALL COUNTRIES</option>
-                <option value="NORTHERN AFRICA">NORTHERN AFRICA</option>
-                <option value="SUB-SAHARAN AFRICA">SUB-SAHARAN AFRICA</option>
-                <option value="WESTERN EUROPE">WESTERN EUROPE</option>
-                <option value="EASTERN EUROPE">EASTERN EUROPE</option>
-                <option value="BALTICS">BALTICS</option>
-                <option value="NEAR EAST">NEAR EAST</option>
-                <option value="C.W. OF IND. STATES">C.W. OF IND. STATES</option>
-                <option value="ASIA (EX. NEAR EAST)">ASIA</option>
-                <option value="OCEANIA">OCEANIA</option>
-                <option value="LATIN AMERICA AND CARIBBEAN">
-                  LATIN AMERICA AND CARIBBEAN
-                </option>
-                <option value="NORTHERN AMERICA">NORTH AMERICA</option>
-              </select>
+              Sort by:
             </label>
+            <select name="sort-selector" id="sort-selector">
+              <option value="">ALPHABETICAL</option>
+              <option value="POPULATION">POPULATION</option>
+              <option value="GDP">GDP</option>
+            </select>
+            <label for="region-selector">
+              Region:
+            </label>
+            <select name="region-selector" id="region-selector">
+              <option value="">ALL COUNTRIES</option>
+              <option value="NORTHERN AFRICA">NORTHERN AFRICA</option>
+              <option value="SUB-SAHARAN AFRICA">SUB-SAHARAN AFRICA</option>
+              <option value="WESTERN EUROPE">WESTERN EUROPE</option>
+              <option value="EASTERN EUROPE">EASTERN EUROPE</option>
+              <option value="BALTICS">BALTICS</option>
+              <option value="NEAR EAST">NEAR EAST</option>
+              <option value="C.W. OF IND. STATES">C.W. OF IND. STATES</option>
+              <option value="ASIA (EX. NEAR EAST)">ASIA</option>
+              <option value="OCEANIA">OCEANIA</option>
+              <option value="LATIN AMERICA AND CARIBBEAN">
+                LATIN AMERICA AND CARIBBEAN
+              </option>
+              <option value="NORTHERN AMERICA">NORTH AMERICA</option>
+            </select>
+            <label for="min-gdp">
+              Minimum GDP:
+            </label>
+            <input type="number" min="0" max="55000" name="min-gdp" id="min-gdp">
+            <label for="max-gdp">
+              Maximum GDP:
+            </label>
+            <input type="number" min="0" max="55000" name="max-gdp" id="max-gdp">
             <button type="submit" class="btn btn-secondary btn-sm">View</button>
           </form>
         </div>
