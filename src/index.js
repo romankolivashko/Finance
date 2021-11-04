@@ -10,7 +10,6 @@ import PatientService from "./js/patient-service";
 import NumberOfComplaintService from "./js/numberofcomplaint-service.js";
 import displayCountries from "./js/country-display.js";
 import displayResultPatients from "./js/patient-display";
-import displayComplaints from "./js/complaint-display.js";
 import displayResultEconomy from "./js/economy-display.js";
 import displayPitchers from "./js/pitcher-display.js";
 import displayNumberOfComplaints from "./js/numberofcomplaint-display.js";
@@ -67,11 +66,7 @@ $("#get-complaints").click(function () {
 
 });
 
-async function getComplaintsAsync() {
-  const response = await ComplaintService.getComplaints();
-  displayComplaints(response);
-  console.log(response);
-}
+
 ////////////
 //NumberOfComplaints
 ///////////
@@ -94,7 +89,7 @@ $("#get-numberofcomplaints").click(function () {
 
 async function getComplaintsAsync() {
   const response = await ComplaintService.getComplaints();
-  displayComplaints(response);
+  displayNumberOfComplaints(response);
   console.log(response);
 }
 
