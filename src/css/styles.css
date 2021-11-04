@@ -1,5 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jost&display=swap');
+
 .hidden {
   display: none;
+}
+
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar {
+  width: 0;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
 }
 
 
@@ -17,16 +28,17 @@ a:hover{color: #000; text-decoration: none;}
 
 body {
   background: #fafafa;
+  /* background-color: #74DA9F; */
+  /* background-color: #3AAFA9; */
+  /* background-color: #FFCCBC; */
+  /* background-color: #A8D1E7; */
+  background-color: #EEE2DC;
+  height: fit-content;
+  overflow-y: hidden;
 }  
 
-/* .container {
-  width: 100%;
-  height: 50px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  margin-left: -25%;
-  margin-top: -25px;
+body::-webkit-scrollbar {
+  display: none;
 }
 
 p {
@@ -34,7 +46,22 @@ p {
   line-height: 50px;
   font-size: 200%;
   color: #888;
-} */
+}
+
+.navbar {
+  font-size: 32px;
+  background-color: #1F2833!important;
+  font-family: Bebas Neue!important;
+  /* font-family: 'Jost', sans-serif !important; */
+}
+
+.navlink {
+  color: white!important;
+}
+
+.navbar-brand {
+  margin-left: 15px;
+}
 
 .scroller {
   height: 50px;
@@ -47,14 +74,14 @@ p {
 
 .scroller span {
   display: block; 
-  font-size: 300%;
+  font-size: 280%;
   color: rgb(92, 87, 87);
 }
 
 .scroller .inner {
-  -webkit-animation: scroll 10s 2 ease-out;
-  -moz-animation: scroll 10s 2 ease-out;
-  animation: scroll 10s 2 ease-out;
+  -webkit-animation: scroll 10s 3 ease-out;
+  -moz-animation: scroll 10s 3 ease-out;
+  animation: scroll 10s 3 ease-out;
   -webkit-animation-fill-mode: forwards;
   -moz-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
@@ -146,4 +173,20 @@ p {
   100% {margin-top: -150px;}
 }
 
+
+div#footer {
+  position:fixed;
+  text-align: center;
+  margin-top: 10em;
+  bottom:0px;
+  left:0px;
+  width:100%;
+  color:grey;
+  padding:8px;
+}
+
+.chart-body{
+  margin-top: 5em;
+  height: 100%;
+}
 

@@ -32,6 +32,9 @@ $("#get-countries").click(function () {
   getCountriesAsync();
   $("#countries-display").show();
   $("#economy-display").hide();
+  $("#complaints-display").hide();
+  $("#pitcher-display").hide();
+  $("#patients-display").hide();
   $(".scroller").hide();
 });
 
@@ -49,8 +52,15 @@ $("#load-complaints").click(function () {
 });
 
 $("#get-complaints").click(function () {
-  console.log("button clicked");
+  //console.log("button clicked");
   getComplaintsAsync();
+  $("#complaints-display").show();
+  $("#economy-display").hide();
+  $("#patients-display").hide();
+  $("#countries-display").hide();
+  $("#pitcher-display").hide();
+  $(".scroller").hide();
+  
 });
 
 async function getComplaintsAsync() {
@@ -62,13 +72,18 @@ async function getComplaintsAsync() {
 ////////////
 //Pitchers
 ///////////
+$("#load-pitchers").click(function () {
+  PitcherService.loadPitchers();
+});
 
 $("#get-pitchers").click(function () {
   getPitchersAsync();
-});
-
-$("#load-pitchers").click(function () {
-  PitcherService.loadPitchers();
+  $("#pitcher-display").show();
+  $("#complaints-display").hide();
+  $("#economy-display").hide();
+  $("#patients-display").hide();
+  $("#countries-display").hide();
+  $(".scroller").hide();
 });
 
 async function getPitchersAsync() {
@@ -86,6 +101,12 @@ $("#load-patients").click(function () {
 
 $("#get-patients").click(function () {
   getPatientsAsync();
+  $("#patients-display").show();
+  $("#pitcher-display").hide();
+  $("#complaints-display").hide();
+  $("#economy-display").hide();
+  $("#countries-display").hide();
+  $(".scroller").hide();
 });
 
 async function getPatientsAsync() {
@@ -104,6 +125,9 @@ $("#load-economy").click(function () {
 $("#get-economy").click(function () {
   getEconomyAsync();
   $("#economy-display").show();
+  $("#patients-display").hide();
+  $("#pitcher-display").hide();
+  $("#complaints-display").hide();
   $("#countries-display").hide();
   $(".scroller").hide();
 });

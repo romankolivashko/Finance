@@ -34,9 +34,9 @@ export default function displayComplaints(complaints) {
   const complaintsHtml = complaints
     .map((complaint) => {
       return `<div class="col my-3">
-      <div class="card mx-auto h-100" style="width: 18rem;">
+      <div class="card h-100"">
         <div class="card-body d-flex flex-column">
-          <h5 class="card-title">${complaint.consumerComplaint}</h5>
+          <h5 class="card-text">${complaint.consumerComplaint}</h5>
           <p class="card-text">Company: ${complaint.company}</p>
           <p class="card-text">State: ${complaint.state}</p>
         </div>

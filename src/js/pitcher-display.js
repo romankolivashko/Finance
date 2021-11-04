@@ -7,8 +7,8 @@ export default function displayPitchers(response)
 //////////////
 /// d3.js
 /////////////
-  var width=1000;
-  var height=800;
+  var width=400;
+  var height=300;
 
   var spacing = 50;
   
