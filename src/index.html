@@ -77,7 +77,10 @@
     </div>
     <!-- Splash screen end -->
     <div class="chart-body">
+      
       <div id="countries-display" class="hidden">
+          <h2>Global GDP </h2>
+          <h5>by country</h5>  
         <div id="countries-chart-container">
           <canvas id="countries-chart"></canvas>
         </div>
@@ -126,8 +129,9 @@
         </div>
       </div>
 
-      <div id="pitcher-display">
-
+      <div id="pitcher-display" class="hidden">
+          <h2>Baseball Pitcher Salary </h2>
+          <h5>comparing pitcher salary to the pitch count</h5>  
         <div class="row">
           <div class="col">
             <section class="pitchersChart"></section>
@@ -149,7 +153,10 @@
       </div>
 
       <div id="economy-display" class="inner">
-
+        <div id="hide-header-econ">
+           <h2>Historical Economy Performance</h2>
+           <h5>by Inflation, Unemployment, Interest and GDP</h5>
+        </div>
         <div class="row" style="margin-top: 6em;">
           <div class="col">
             <canvas id="economyChartInflation"></canvas>
@@ -170,14 +177,19 @@
         </div>
 
       </div>
-      <div id="numberOfComplaints-display">
+
+      <div id="numberOfComplaints-display" class="hidden">
+        <h2>Classifing Complaints </h2>
+        <h5>by company and frequency</h5>
         <div>
           <canvas id="numberofcomplaintsChart"></canvas>
         </div>
       </div>
 
 
-      <div id="patients-display">
+      <div id="patients-display" class="hidden">
+        <h2>Health care cost </h2>
+        <h5>identifing main trends that drive the health care cost</h5>  
 
         <div class="row">
           <div class="col">
