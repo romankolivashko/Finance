@@ -46,7 +46,7 @@ export default function displayResultPatients(patients) {
   const patientData = {
     labels: patientLabels,
     datasets: [{
-      label: 'Bmi',
+      label: 'BMI x Healthcare Cost',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
       data: patientRatings,
@@ -56,9 +56,9 @@ export default function displayResultPatients(patients) {
   const ageData = {
     labels: ageLabels,
     datasets: [{
-      label: 'Age',
+      label: 'Age x Healthcare Cost',
       backgroundColor: 'rgb(153, 51, 255)',
-      borderColor: 'rgbrgb(153, 51, 255)',
+      borderColor: 'rgb(153, 51, 255)',
       data: ageRatings,
     }]
   };
@@ -67,6 +67,7 @@ export default function displayResultPatients(patients) {
     type: 'scatter',
     data: patientData,
     options: {
+      pointRadius: 1,
       animation,
       scales: {
         y: {
@@ -79,6 +80,7 @@ export default function displayResultPatients(patients) {
     type: 'scatter',
     data: ageData,
     options: {
+      pointRadius: 1,
       animation,
       scales: {
         y: {
