@@ -66,7 +66,6 @@ $("#get-complaints").click(function () {
 
 });
 
-
 ////////////
 //NumberOfComplaints
 ///////////
@@ -88,7 +87,7 @@ $("#get-numberofcomplaints").click(function () {
 });
 
 async function getComplaintsAsync() {
-  const response = await ComplaintService.getComplaints();
+  const response = await NumberOfComplaintService.getComplaints();
   displayNumberOfComplaints(response);
   console.log(response);
 }
