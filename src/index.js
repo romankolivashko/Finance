@@ -63,7 +63,7 @@ $("#get-complaints").click(function () {
   $("#countries-display").hide();
   $("#pitcher-display").hide();
   $(".scroller").hide();
-
+  $("#numberOfComplaints-display").hide();
 });
 
 ////////////
@@ -107,6 +107,7 @@ $("#get-pitchers").click(function () {
   $("#patients-display").hide();
   $("#countries-display").hide();
   $(".scroller").hide();
+  $("#numberOfComplaints-display").hide();
 });
 
 async function getPitchersAsync() {
@@ -130,6 +131,7 @@ $("#get-patients").click(function () {
   $("#economy-display").hide();
   $("#countries-display").hide();
   $(".scroller").hide();
+  $("#numberOfComplaints-display").hide();
 });
 
 async function getPatientsAsync() {
@@ -153,6 +155,7 @@ $("#get-economy").click(function () {
   $("#patients-display").hide();
   $("#pitcher-display").hide();
   $("#complaints-display").hide();
+  $("#numberOfComplaints-display").hide();
 });
 
 async function getEconomyAsync() {
