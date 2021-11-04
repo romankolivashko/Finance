@@ -57,6 +57,7 @@ $("#load-complaints").click(function () {
 $("#get-complaints").click(function () {
   //console.log("button clicked");
   getComplaintsAsync();
+  $("#hide-header-countries").hide();
   $("#complaints-display").show();
   $("#economy-display").hide();
   $("#patients-display").hide();
@@ -126,6 +127,7 @@ $("#load-patients").click(function () {
 $("#get-patients").click(function () {
   getPatientsAsync();
   $("#patients-display").show();
+  $("#hide-patients-header").show();
   $("#pitcher-display").hide();
   $("#complaints-display").hide();
   $("#economy-display").hide();
@@ -152,6 +154,7 @@ $("#get-economy").click(function () {
   $(".scroller").hide();
   $("#countries-display").hide();
   $("#economy-display").show();
+  $("#hide-header-econ").show();
   $("#patients-display").hide();
   $("#pitcher-display").hide();
   $("#complaints-display").hide();
