@@ -1,6 +1,6 @@
 # Finance
 
-A JS frontend to call the C# FinanceAPI
+A JS frontend to call the C# FinanceAPI and display the data using charts.
 
 ## Setup
 
