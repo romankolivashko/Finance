@@ -7,11 +7,13 @@ import ComplaintService from "./js/complaint-service.js";
 import CountryService from "./js/country-service";
 import PitcherService from "./js/pitcher-service.js";
 import PatientService from "./js/patient-service";
+import NumberOfComplaintService from "./js/numberofcomplaint-service.js";
 import displayCountries from "./js/country-display.js";
 import displayResultPatients from "./js/patient-display";
 import displayComplaints from "./js/complaint-display.js";
 import displayResultEconomy from "./js/economy-display.js";
 import displayPitchers from "./js/pitcher-display.js";
+import displayNumberOfComplaints from "./js/numberofcomplaint-display.js";
 
 ////////////
 //Countries
@@ -62,7 +64,32 @@ $("#get-complaints").click(function () {
   $("#countries-display").hide();
   $("#pitcher-display").hide();
   $(".scroller").hide();
-  
+
+});
+
+async function getComplaintsAsync() {
+  const response = await ComplaintService.getComplaints();
+  displayComplaints(response);
+  console.log(response);
+}
+////////////
+//NumberOfComplaints
+///////////
+
+$("#load-numberofcomplaints").click(function () {
+  NumberOfComplaintService.loadComplaints();
+});
+
+$("#get-numberofcomplaints").click(function () {
+  //console.log("button clicked");
+  getComplaintsAsync();
+  $("#numberOfComplaints-display").show();
+  $("#economy-display").hide();
+  $("#patients-display").hide();
+  $("#countries-display").hide();
+  $("#pitcher-display").hide();
+  $(".scroller").hide();
+
 });
 
 async function getComplaintsAsync() {
