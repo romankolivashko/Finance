@@ -7,13 +7,13 @@ export default function displayPitchers(response)
 //////////////
 /// d3.js
 /////////////
-  var width=400;
-  var height=300;
+  // var width=400;
+  // var height=300;
 
 if (($(".pitchersChart:not(:empty)").length) === 0 ){
 
-  var width=1000;
-  var height=500;
+  var width=400;
+  var height=300;
   
   var spacing = 50;
   

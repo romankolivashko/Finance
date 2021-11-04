@@ -36,11 +36,6 @@ $("#get-countries").click(function () {
   $("#pitcher-display").hide();
   $("#patients-display").hide();
   $(".scroller").hide();
-  $("#pitcher-display").hide();
-  $("#economy-display").hide();
-  $("#patients-display").hide();
-  $("#complaints-display").hide();
-  $("#countries-display").show();
 });
 
 async function getCountriesAsync(region, sortParam) {
@@ -130,14 +125,11 @@ $("#load-economy").click(function () {
 $("#get-economy").click(function () {
   getEconomyAsync();
   $(".scroller").hide();
-  $("#pitcher-display").hide();
+  $("#countries-display").hide();
   $("#economy-display").show();
   $("#patients-display").hide();
   $("#pitcher-display").hide();
   $("#complaints-display").hide();
-  $("#countries-display").hide();
-  $("#patients-display").hide();
-  $("#complaints-display").show();
 });
 
 async function getEconomyAsync() {
